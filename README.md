@@ -18,4 +18,4 @@
 
 This web page is deployed at github pages
 
--Deployment Link:
+-Deployment Link: https://desimus1.github.io/se_project_spots/
