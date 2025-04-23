@@ -19,3 +19,7 @@
 This web page is deployed at github pages
 
 -Deployment Link: https://desimus1.github.io/se_project_spots/
+
+## Video Link
+
+-Video Link: https://drive.google.com/file/d/1Lfefjandk_4QPQ4FSQkYsprKY_oKTJzI/view?usp=sharing
