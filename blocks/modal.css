@@ -1,0 +1,126 @@
+.modal {
+  visibility: hidden;
+  position: fixed;
+  background-color: #00000050;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+.modal_is-opened {
+  visibility: visible;
+}
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 730px;
+  padding: 32px 50px;
+}
+
+.modal__close-btn {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 36px;
+  right: 53px;
+  border: none;
+  opacity: 40%;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.modal__close-btn:hover {
+  opacity: 100%;
+}
+.modal__title {
+  margin: 0 0 32px;
+  font-weight: 500;
+  font-size: 32px;
+  color: #212121;
+}
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 32px;
+}
+.modal__label_title {
+  color: #212121;
+  font-weight: 500;
+  font-size: 16px;
+  opacity: 70%;
+  margin: 0;
+}
+.modal__input {
+  min-width: 630px;
+  border-radius: 8px;
+  border: 1px solid rgba(33, 33, 33, 30%);
+  padding: 16px 12px;
+  gap: 10px;
+  margin: 8px 0 0;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+}
+.modal__input:hover {
+  border: 1px solid #212121;
+}
+.modal__input::placeholder {
+  opacity: 30%;
+}
+.modal__save-btn {
+  width: 156px;
+  height: 52px;
+  border: none;
+  border-radius: 8px;
+  padding: 18px 32px;
+  background-color: #212121;
+  color: #fcf5e5;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+.modal__save-btn:hover {
+  opacity: 80%;
+}
+@media screen and (max-width: 764px) {
+  .modal {
+    padding: 10px;
+  }
+  .modal__container {
+    max-width: 300px;
+    padding: 12px;
+    gap: 24px;
+  }
+  .modal__close-btn {
+    top: 16px;
+    right: 15px;
+  }
+  .modal__title {
+    font-size: 20px;
+    margin: 0 0 24px;
+  }
+  .modal__input {
+    box-sizing: border-box;
+    min-width: 276px;
+    width: 276px;
+  }
+  .modal__label {
+    margin: 0 0 24px;
+  }
+
+  .modal__save-btn {
+    min-width: 276px;
+  }
+}
