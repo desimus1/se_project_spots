@@ -109,39 +109,6 @@
       <footer class="footer">
         <p class="footer__copyright">2025&copy;Spots</p>
       </footer>
-      <div class="modal modal_is-opened">
-        <div class="modal__container">
-          <button type="button" class="modal__close-btn">
-            <img
-              src="./images/x-button.svg"
-              alt="close button"
-              class="modal__close-btn_image"
-            />
-          </button>
-          <h2 class="modal__title">Edit Profile</h2>
-          <form class="modal__form">
-            <label for="profile-name-input" class="modal__label">
-              <p class="modal__label_title">Name</p>
-              <input
-                id="profile-name-input"
-                type="text"
-                class="modal__input"
-                placeholder="Type your name"
-              />
-            </label>
-            <label for="profile-description-input" class="modal__label">
-              <p class="modal__label_title">Description</p>
-              <input
-                id="profile-description-input"
-                type="text"
-                class="modal__input"
-                placeholder="Describe yourself"
-              />
-            </label>
-            <button type="submit" class="modal__save-btn">Save</button>
-          </form>
-        </div>
-      </div>
       <div class="card__content">
         <h2 class="card__title">
           A very long bridge, over the forest...
@@ -177,6 +144,39 @@
 <footer class="footer">
 <p class="footer__copyright">2025&copy;Spots</p>
 </footer>
+<div class="modal modal_is-opened">
+  <div class="modal__container">
+    <button type="button" class="modal__close-btn">
+      <img
+        src="./images/x-button.svg"
+        alt="close button"
+        class="modal__close-btn_image"
+      />
+    </button>
+    <h2 class="modal__title">Edit Profile</h2>
+    <form class="modal__form">
+      <label for="profile-name-input" class="modal__label">
+        Name
+        <input
+          id="profile-name-input"
+          type="text"
+          class="modal__input"
+          placeholder="Type your name"
+        />
+      </label>
+      <label for="profile-description-input" class="modal__label">
+            Description
+        <input
+          id="profile-description-input"
+          type="text"
+          class="modal__input"
+          placeholder="Describe yourself"
+        />
+      </label>
+      <button type="submit" class="modal__save-btn">Save</button>
+    </form>
+  </div>
+</div>
 <div class="modal ">
 <div class="modal__container">
   <button type="button" class="modal__close-btn">
@@ -189,7 +189,7 @@
   <h2 class="modal__title">New Post</h2>
   <form class="modal__form">
     <label for="post-picture-input" class="modal__label">
-      <p class="modal__label_title">Image link</p>
+      Image link
       <input
         id="post-picture-input"
         type="url"
@@ -198,7 +198,7 @@
       />
     </label>
     <label for="post-caption-input" class="modal__label">
-      <p class="modal__label_title">Caption</p>
+      Caption
       <input
         id="post-caption-input"
         type="text"
