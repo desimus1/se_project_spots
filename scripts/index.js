@@ -41,7 +41,7 @@ function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   editProfileModal.classList.remove("modal_is-opened");
 }
-newPostCardForm.addEventListener("submit", handleEditProfileSubmit);
+editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleAddCardSubmit(evt) {
   console.log(newPostNameInput);
