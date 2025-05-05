@@ -106,7 +106,7 @@
   }
   .modal__container {
     max-width: 300px;
-    padding: 24px;
+    padding: 22px 12px 12px;
   }
   .modal__close-btn {
     top: 16px;
