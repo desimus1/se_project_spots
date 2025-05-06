@@ -69,6 +69,7 @@
 .modal__input {
   width: 100%;
   border-radius: 8px;
+  box-sizing: border-box;
   border: 1px solid rgba(33, 33, 33, 40%);
   padding: 16px 12px;
   gap: 10px;
@@ -117,9 +118,6 @@
     margin: 0 0 24px;
   }
   .modal__input {
-    box-sizing: border-box;
-    font-weight: 500;
-    line-height: 100%;
     font-size: 16px;
   }
   .modal__label {
