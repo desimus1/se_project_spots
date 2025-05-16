@@ -68,6 +68,11 @@ function getCardElement(data) {
   cardDeleteBtnEl.addEventListener("click", function () {
     cardElement.remove();
   });
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+
+  cardLikeBtnEl.addEventListener("click", function () {
+    cardLikeBtnEl.classList.toggle("card__like-btn_active");
+  });
 
   cardImgEl.addEventListener("click", function () {
     openModal(imageViewModal);
@@ -78,12 +83,6 @@ function getCardElement(data) {
 
   imageCloseBtn.addEventListener("click", function () {
     closeModal(imageViewModal);
-  });
-
-  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-
-  cardLikeBtnEl.addEventListener("click", function () {
-    cardLikeBtnEl.classList.toggle("card__like-btn_active");
   });
 
   return cardElement;
@@ -130,6 +129,7 @@ function handleAddCardSubmit(evt) {
   cardList.prepend(cardElement);
   evt.preventDefault();
   closeModal(newPostModal);
+  newPostCardForm.reset();
 }
 
 newPostCardForm.addEventListener("submit", handleAddCardSubmit);
