@@ -160,9 +160,9 @@
   .modal__save-btn {
     width: 100%;
   }
-  .modal__img_content {
-    max-width: 288px;
-    max-height: 426px;
+  .modal__img {
+    max-width: none;
+    max-height: none;
   }
   .modal__close-btn_type_preview {
     top: -52px;
