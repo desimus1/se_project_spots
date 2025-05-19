@@ -81,10 +81,6 @@ function getCardElement(data) {
     imageCaption.textContent = data.name;
   });
 
-  imageCloseBtn.addEventListener("click", function () {
-    closeModal(imageViewModal);
-  });
-
   return cardElement;
 }
 function openModal(modal) {
@@ -111,6 +107,10 @@ profileNewPostBtn.addEventListener("click", function () {
 
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
+});
+
+imageCloseBtn.addEventListener("click", function () {
+  closeModal(imageViewModal);
 });
 
 function handleEditProfileSubmit(evt) {

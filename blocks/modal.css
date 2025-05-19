@@ -105,7 +105,7 @@
 .modal__save-btn:hover {
   opacity: 80%;
 }
-.modal__img_content {
+.modal__img-content {
   position: relative;
 }
 .modal__img {
