@@ -83,11 +83,21 @@
   cursor: pointer;
   line-height: 100%;
 }
+.modal__input_error {
+  border: 1px solid rgba(255, 0, 0, 70%);
+}
 .modal__input:hover {
   border: 1px solid #212121;
 }
 .modal__input::placeholder {
   opacity: 30%;
+}
+.modal__error {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  color: rgba(255, 0, 0, 70%);
 }
 .modal__save-btn {
   width: 156px;
@@ -105,6 +115,11 @@
 .modal__save-btn:hover {
   opacity: 80%;
 }
+
+.modal__save-btn_error {
+  opacity: 50%;
+}
+
 .modal__img-content {
   position: relative;
 }

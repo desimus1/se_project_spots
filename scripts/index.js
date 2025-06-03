@@ -28,7 +28,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
-
+//profile
 const porfileEditBtn = document.querySelector(".profile__edit-btn");
 const profileNewPostBtn = document.querySelector(".profile__new-post-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
@@ -42,15 +42,19 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 const editProfileForm = editProfileModal.querySelector(".modal__form");
+//post
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostNameInput = newPostModal.querySelector("#post-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#post-picture-input");
 const newPostCardForm = newPostModal.querySelector(".modal__form");
+const postSubmitBtn = newPostModal.querySelector(".modal__save-btn");
+//img popup
 const imageViewModal = document.querySelector("#image-view-modal");
 const imageCloseBtn = imageViewModal.querySelector(".modal__close-btn");
 const imageEl = imageViewModal.querySelector(".modal__img");
 const imageCaption = imageViewModal.querySelector(".modal__caption");
+//card
 const cardList = document.querySelector(".cards__list");
 const cardTemplate = document
   .querySelector("#card__template")
@@ -83,8 +87,10 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  modal.addEventListener("click", closeModalOnOverlay);
 }
 
 function closeModal(modal) {
@@ -113,6 +119,22 @@ imageCloseBtn.addEventListener("click", function () {
   closeModal(imageViewModal);
 });
 
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape" || evt.key === "Esc") {
+    const activeModal = document.querySelector(".modal_is-opened");
+    if (activeModal) {
+      closeModal(activeModal);
+    }
+  }
+});
+
+function closeModalOnOverlay(evt) {
+  const overLay = document.querySelector(".modal");
+  if (!evt.target.classList.contains(".modal")) {
+    closeModal(evt.target);
+  }
+}
+
 function handleEditProfileSubmit(evt) {
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
@@ -128,6 +150,7 @@ function handleAddCardSubmit(evt) {
   });
   cardList.prepend(cardElement);
   evt.preventDefault();
+  disableButton(postSubmitBtn, settings);
   closeModal(newPostModal);
   newPostCardForm.reset();
 }
