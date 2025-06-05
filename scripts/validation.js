@@ -77,4 +77,19 @@ const enableValidation = (settings) => {
   });
 };
 
+const resetValidation = (formElement, settings) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(
+    settings.submitButtonSelector
+  );
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+  });
+
+  disableButton(buttonElement, settings);
+};
+
 enableValidation(settings);

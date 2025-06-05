@@ -95,12 +95,14 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  modal.removeEventLister("click", closeModalOnOverlay);
 }
 
 porfileEditBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
+  resetValidation(editProfileForm, settings);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -109,6 +111,7 @@ editProfileCloseBtn.addEventListener("click", function () {
 
 profileNewPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
+  resetValidation(newPostCardForm, settings);
 });
 
 newPostCloseBtn.addEventListener("click", function () {
@@ -119,17 +122,16 @@ imageCloseBtn.addEventListener("click", function () {
   closeModal(imageViewModal);
 });
 
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape" || evt.key === "Esc") {
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
     const activeModal = document.querySelector(".modal_is-opened");
     if (activeModal) {
       closeModal(activeModal);
     }
   }
-});
+}
 
 function closeModalOnOverlay(evt) {
-  const overLay = document.querySelector(".modal");
   if (!evt.target.classList.contains(".modal")) {
     closeModal(evt.target);
   }
