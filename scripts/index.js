@@ -101,7 +101,7 @@ function openModal(modal) {
   modal.classList.add("modal_is-opened");
   modal.addEventListener("click", closeModalOnOverlay);
   document.addEventListener("keydown", handleEscape);
-  resetValidation(settings.formSelector);
+  // resetValidation(settings.formSelector);
 }
 
 function closeModal(modal) {
