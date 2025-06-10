@@ -18,8 +18,8 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = "";
   inputElement.classList.remove(settings.inputErrorClass);
 };
-//validation issue
-const resetValidation = (formElement, inputElement, settings) => {
+
+const resetValidation = (formElement, inputElements, settings) => {
   formElement.reset();
   hideInputError(formElement, inputElement, settings);
 };
