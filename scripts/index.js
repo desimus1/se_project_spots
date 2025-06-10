@@ -88,13 +88,26 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_is-opened");
+    if (activeModal) {
+      closeModal(activeModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
   modal.addEventListener("click", closeModalOnOverlay);
+  document.addEventListener("keydown", handleEscape);
+  resetValidation(settings.formSelector);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  modal.removeEventListener("click", closeModalOnOverlay);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 porfileEditBtn.addEventListener("click", function () {
@@ -119,17 +132,7 @@ imageCloseBtn.addEventListener("click", function () {
   closeModal(imageViewModal);
 });
 
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape" || evt.key === "Esc") {
-    const activeModal = document.querySelector(".modal_is-opened");
-    if (activeModal) {
-      closeModal(activeModal);
-    }
-  }
-});
-
 function closeModalOnOverlay(evt) {
-  const overLay = document.querySelector(".modal");
   if (!evt.target.classList.contains(".modal")) {
     closeModal(evt.target);
   }
