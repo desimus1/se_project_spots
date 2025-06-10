@@ -105,7 +105,6 @@ function openModal(modal) {
   modal.classList.add("modal_is-opened");
   modal.addEventListener("click", closeModalOnOverlay);
   document.addEventListener("keydown", handleEscape);
-  resetValidation(editFormInput);
 }
 
 function closeModal(modal) {
@@ -117,6 +116,11 @@ function closeModal(modal) {
 porfileEditBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileModal,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
   openModal(editProfileModal);
 });
 
@@ -125,6 +129,7 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 profileNewPostBtn.addEventListener("click", function () {
+  resetValidation(newPostModal, [newPostNameInput, newPostLinkInput], settings);
   openModal(newPostModal);
 });
 

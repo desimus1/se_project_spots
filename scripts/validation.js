@@ -19,9 +19,10 @@ const hideInputError = (formElement, inputElement, settings) => {
   inputElement.classList.remove(settings.inputErrorClass);
 };
 
-const resetValidation = (formElement, inputElements, settings) => {
-  formElement.reset();
-  hideInputError(formElement, inputElement, settings);
+const resetValidation = (formElement, inputList, settings) => {
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+  });
 };
 
 const checkInputValidity = (formElement, inputElement, settings) => {
