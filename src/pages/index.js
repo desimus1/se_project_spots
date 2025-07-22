@@ -1,3 +1,41 @@
+import "./index.css";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+
+import headerLogo from "./../images/logo.svg";
+import profileAvatar from "./../images/avatar.jpg";
+import editIcon from "./../images/edit-Icon.svg";
+import plusIcon from "./../images/plus-icon.svg";
+import faviconImage from "./../images/logo.svg";
+
+const headerLogoImg = document.querySelector(
+  '.header__logo[data-image-id="header-logo"]'
+);
+if (headerLogoImg) {
+  headerLogoImg.src = headerLogo;
+}
+
+const profileAvatarImg = document.querySelector(
+  '.profile__image[data-image-id="profile-avatar"]'
+);
+if (profileAvatarImg) {
+  profileAvatarImg.src = profileAvatar;
+}
+
+const editIconImg = document.querySelector('img[data-image-id="edit-icon"]');
+if (editIconImg) {
+  editIconImg.src = editIcon;
+}
+
+const plusIconImg = document.querySelector('img[data-image-id="plus-icon"]');
+if (plusIconImg) {
+  plusIconImg.src = plusIcon;
+}
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -173,3 +211,5 @@ initialCards.reverse().forEach(function (item) {
   const cardElement = getCardElement(item);
   cardList.prepend(cardElement);
 });
+
+enableValidation(settings);
