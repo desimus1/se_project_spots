@@ -21,7 +21,13 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  getUserInfo(name, about) {
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/user/me`, {
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  editUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/user/me`, {
       method: "PATCH",
       headers: this._headers,

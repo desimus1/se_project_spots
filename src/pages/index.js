@@ -80,6 +80,15 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards, userInfo]) => {
+    if (profileNameEl) {
+      profileNameEl.textContent = userInfo.name;
+    }
+    if (profileDescriptionEl) {
+      profileDescriptionEl.textContent = userInfo.about;
+    }
+    if (profileAvatarImg && userInfo.avatar) {
+      profileAvatarImg.src = userInfo.avatar;
+    }
     cards.reverse().forEach(function (item) {
       const cardElement = getCardElement(item);
       cardList.prepend(cardElement);
@@ -207,10 +216,19 @@ function closeModalOnOverlay(evt) {
 }
 
 function handleEditProfileSubmit(evt) {
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   evt.preventDefault();
-  closeModal(editProfileModal);
+  api
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((data) => {
+      //TODO use data argument instead of the input values
+      profileNameEl.textContent = editProfileNameInput.value;
+      profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error);
 }
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
