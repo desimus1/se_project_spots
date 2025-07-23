@@ -3,16 +3,15 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-
+  //helper function
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Error: ${res.status}`);
   }
-
+  //main functions
   getAppInfo() {
-    //call getUserInfo in array
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
@@ -22,12 +21,16 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  getUserInfo() {
+  getUserInfo(name, about) {
     return fetch(`${this._baseUrl}/user/me`, {
+      method: "PATCH",
       headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about,
+      }),
     }).then(this._handleResponse);
   }
-  // create getUserInfo (different base inf)
 }
 
 export default Api;

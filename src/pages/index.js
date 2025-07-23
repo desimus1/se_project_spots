@@ -77,22 +77,15 @@ const api = new Api({
   },
 });
 
-//destructure the second item in the call back of the .then()
-
 api
   .getAppInfo()
-  .then(([cards]) => {
-    console.log(cards);
+  .then(([cards, userInfo]) => {
     cards.reverse().forEach(function (item) {
       const cardElement = getCardElement(item);
       cardList.prepend(cardElement);
     });
   })
   .catch(console.error);
-
-//handle useer info
-//set src of avatar image
-//set text content of about and name
 
 //form
 const editForm = document.querySelector(".modal__form");
