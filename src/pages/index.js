@@ -76,7 +76,7 @@ const newPostNameInput = newPostModal.querySelector("#post-caption-input");
 const newPostLinkInput = newPostModal.querySelector("#post-picture-input");
 const newPostCardForm = newPostModal.querySelector(".modal__form");
 const postSubmitBtn = newPostModal.querySelector(".modal__save-btn");
-
+//image view modal
 const imageViewModal = document.querySelector("#image-view-modal");
 const imageCloseBtn = imageViewModal.querySelector(".modal__close-btn");
 const imageEl = imageViewModal.querySelector(".modal__img");
@@ -103,11 +103,19 @@ const deleteCardSubmitBtn = deleteCardModal.querySelector(
 );
 let selectedCard;
 let selectedCardId;
+
 //new post function
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImgEl = cardElement.querySelector(".card__image");
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+
+  let isLiked = data.isLiked;
+
+  if (isLiked) {
+    cardLikeBtnEl.classList.add("card__like-btn_active");
+  }
 
   cardElement.dataset.cardId = data._id;
 
@@ -121,11 +129,10 @@ function getCardElement(data) {
     deleteCardModal.dataset.cardId = data._id;
     deleteCardModal.dataset.cardElement = cardElement;
   });
-  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
 
-  cardLikeBtnEl.addEventListener("click", function () {
-    cardLikeBtnEl.classList.toggle("card__like-btn_active");
-  });
+  cardLikeBtnEl.addEventListener("click", () =>
+    handleCardLikeButtonClick(cardLikeBtnEl, data._id, isLiked)
+  );
 
   cardImgEl.addEventListener("click", function () {
     openModal(imageViewModal);
@@ -300,6 +307,21 @@ function handleDeleteCardSubmit(evt) {
 }
 
 deleteCardForm.addEventListener("submit", handleDeleteCardSubmit);
+
+function handleCardLikeButtonClick(cardLikeButton, cardId) {
+  const isCurrentlyLiked = cardLikeButton.classList.contains(
+    "card__like-btn_active"
+  );
+  const isCurrentlyUnliked = isCurrentlyLiked;
+
+  api
+    .handleLike(cardId, isCurrentlyUnliked)
+    .then((updatedCard) => {
+      cardLikeButton.classList.toggle("card__like-btn_active");
+    })
+    .catch(console.error);
+}
+
 //api connection
 api
   .getAppInfo()
